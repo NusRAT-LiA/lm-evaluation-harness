@@ -1,27 +1,20 @@
-task: boolqa_bn
+task: boolq_bn
 dataset_path: hishab/boolq_bn
-
-description: "Bangla BoolQ: yes/no questions based on a passage."
-test_split: validation
-fewshot_split: train
-fewshot_config:
-  sampler: first_n
-
+dataset_name: null
 output_type: multiple_choice
-
-doc_to_text: |-
-  Passage:
-  {{passage.strip()}}
-
-  Question:
-  {{question.strip()}}
-
-  Answer:
-
-doc_to_choice: ["yes", "no"]
+training_split: train
+validation_split: validation
+doc_to_text: "{{passage}}\nQuestion: {{question}}?\nAnswer:"
 doc_to_target: answer
-
+doc_to_choice: ["no", "yes"]
+should_decontaminate: true
+doc_to_decontamination_query: passage
 metric_list:
   - metric: acc
     aggregation: mean
     higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 2.0
