@@ -1,0 +1,18 @@
+task: stanceQA_bn
+
+dataset_path: Nusrat-Lia/stanceQA_bn
+
+test_split: test
+
+output_type: multiple_choice
+
+doc_to_text: "{{question}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nAnswer:"
+
+doc_to_choice: ["A", "B", "C"]
+
+doc_to_target: answer
+
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
