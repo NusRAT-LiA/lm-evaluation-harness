@@ -1,4 +1,4 @@
-task: stanceQA_bn
+task: stanceqa_bn
 
 dataset_path: Nusrat-Lia/stanceQA_bn
 
