@@ -3,7 +3,7 @@ dataset_path: khondoker/SentNoB
 dataset_name: null
 output_type: multiple_choice
 test_split: train
-doc_to_text: "নিচের মন্তব্যটির অনুভূতি কী?\n{{Data}}\nউত্তর:"
+doc_to_text: "নিচের মন্তব্যটির অনুভূতি কী?\n{{Data.strip()}}\nউত্তর:"
 doc_to_target: Label
 doc_to_choice: ["নিরপেক্ষ", "ইতিবাচক", "নেতিবাচক"]
 should_decontaminate: true

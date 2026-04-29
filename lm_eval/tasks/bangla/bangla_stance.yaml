@@ -1,18 +1,19 @@
 task: stanceqa_bn
-
 dataset_path: Nusrat-Lia/stanceQA_bn
-
-test_split: test
-
+dataset_name: null
 output_type: multiple_choice
-
-doc_to_text: "{{question}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nAnswer:"
-
-doc_to_choice: ["A", "B", "C"]
-
-doc_to_target: answer
-
+test_split: test
+doc_to_text: "{{question.strip()}}\nউত্তর:"
+doc_to_choice: "{{choices}}"
+doc_to_target: "{{ {'A':0, 'B':1, 'C':2}[answer] }}"
+should_decontaminate: true
+doc_to_decontamination_query: question
 metric_list:
   - metric: acc
     aggregation: mean
     higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 2.0
