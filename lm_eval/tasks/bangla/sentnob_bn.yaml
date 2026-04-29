@@ -1,0 +1,19 @@
+task: sentnob_bn
+dataset_path: khondoker/SentNoB
+dataset_name: null
+output_type: multiple_choice
+test_split: train
+doc_to_text: "নিচের মন্তব্যটির অনুভূতি কী?\n{{Data}}\nউত্তর:"
+doc_to_target: Label
+doc_to_choice: ["নিরপেক্ষ", "ইতিবাচক", "নেতিবাচক"]
+should_decontaminate: true
+doc_to_decontamination_query: Data
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
